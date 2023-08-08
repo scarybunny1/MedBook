@@ -11,13 +11,7 @@ class LandingViewController: UIViewController {
     
     //MARK:  View elements
     
-    let headerLabel: UILabel = {
-        let l = UILabel()
-        l.translatesAutoresizingMaskIntoConstraints = false
-        l.font = UIFont(name: "Degular-Semibold", size: 32)
-        l.text = "MedBook"
-        return l
-    }()
+    let headerLabel = BSEHeaderLabel(text: "MedBook")
     
     let imageView: UIImageView = {
         let iv = UIImageView()
@@ -27,31 +21,9 @@ class LandingViewController: UIViewController {
         return iv
     }()
     
-    let signupButton: UIButton = {
-        let b = UIButton()
-        b.translatesAutoresizingMaskIntoConstraints = false
-        b.setTitle("Signup", for: .normal)
-        b.setTitleColor(.black, for: .normal)
-        b.layer.cornerRadius = 8
-        b.layer.borderColor = UIColor.black.cgColor
-        b.layer.borderWidth = 2
-        b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 22)
-        b.backgroundColor = UIColor(named: "button-bg")
-        return b
-    }()
+    var signupButton: BSEButton!
     
-    let loginButton: UIButton = {
-        let b = UIButton()
-        b.translatesAutoresizingMaskIntoConstraints = false
-        b.setTitle("Login", for: .normal)
-        b.setTitleColor(.black, for: .normal)
-        b.layer.cornerRadius = 8
-        b.layer.borderColor = UIColor.black.cgColor
-        b.layer.borderWidth = 2
-        b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 22)
-        b.backgroundColor = UIColor(named: "button-bg")
-        return b
-    }()
+    var loginButton: BSEButton!
     
     let buttonStackView: UIStackView = {
         let sv = UIStackView()
@@ -71,19 +43,27 @@ class LandingViewController: UIViewController {
     //MARK:  Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginButton = BSEButton(title: "Login", action: {[weak self] in
+            self?.navigateToLoginPage()
+        })
+        
+        signupButton = BSEButton(title: "Signup", action: {[weak self] in
+            self?.navigateToSignupPage()
+        })
+        
         view.backgroundColor = UIColor(named: "background")
         view.addSubview(headerLabel)
         view.addSubview(imageView)
         view.addSubview(buttonStackView)
         buttonStackView.addArrangedSubview(signupButton)
         buttonStackView.addArrangedSubview(loginButton)
-        signupButton.addTarget(self, action: #selector(navigateToSignupPage), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(navigateToLoginPage), for: .touchUpInside)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
@@ -103,12 +83,12 @@ class LandingViewController: UIViewController {
     
     //MARK:  Class Methods
     
-    @objc private func navigateToSignupPage(){
+    private func navigateToSignupPage(){
         let vc = SignupViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc private func navigateToLoginPage(){
+    private func navigateToLoginPage(){
         let vc = LoginViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

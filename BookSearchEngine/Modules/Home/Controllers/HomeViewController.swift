@@ -17,14 +17,7 @@ class HomeViewController: UIViewController {
         return iv
     }()
     
-    let headerLabel: UILabel = {
-        let l = UILabel()
-        l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "MedBook"
-        l.numberOfLines = 2
-        l.font = UIFont(name: "Degular-Bold", size: 32)
-        return l
-    }()
+    let headerLabel = BSEHeaderLabel(text: "MedBook")
     
     let titleLabel: UILabel = {
         let l = UILabel()
@@ -58,6 +51,7 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             headerImageView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             headerImageView.centerYAnchor.constraint(equalTo: headerLabel.centerYAnchor, constant: 1),

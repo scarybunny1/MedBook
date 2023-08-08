@@ -9,14 +9,7 @@ import UIKit
 
 class SignupViewController: UIViewController {
     
-    let headerLabel: UILabel = {
-        let l = UILabel()
-        l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "Welcome \nsign up to continue"
-        l.numberOfLines = 2
-        l.font = UIFont(name: "Degular-Bold", size: 32)
-        return l
-    }()
+    let headerLabel = BSEHeaderLabel(text: "Welcome \nsign up to continue")
     
     let tfStackView: UIStackView = {
         let sv = UIStackView()
@@ -91,7 +84,7 @@ class SignupViewController: UIViewController {
         super.viewDidLayoutSubviews()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         countrySelector.translatesAutoresizingMaskIntoConstraints = false
-        
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),

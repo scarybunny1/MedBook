@@ -28,6 +28,8 @@
 		3A0480102A824FE4005FEE8B /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04800F2A824FE4005FEE8B /* AppHelper.swift */; };
 		3A0480122A825807005FEE8B /* BSEValidatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480112A825807005FEE8B /* BSEValidatorItem.swift */; };
 		3A0480142A8261B4005FEE8B /* BSECheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480132A8261B4005FEE8B /* BSECheckbox.swift */; };
+		3A0480172A827671005FEE8B /* BSEHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */; };
+		3A0480192A82782F005FEE8B /* BSETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480182A82782F005FEE8B /* BSETextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		3A04800F2A824FE4005FEE8B /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
 		3A0480112A825807005FEE8B /* BSEValidatorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEValidatorItem.swift; sourceTree = "<group>"; };
 		3A0480132A8261B4005FEE8B /* BSECheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSECheckbox.swift; sourceTree = "<group>"; };
+		3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEHeaderLabel.swift; sourceTree = "<group>"; };
+		3A0480182A82782F005FEE8B /* BSETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSETextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 		3A047FC12A823F62005FEE8B /* BookSearchEngine */ = {
 			isa = PBXGroup;
 			children = (
+				3A0480152A827661005FEE8B /* Helper Files */,
 				3A047FFD2A82428C005FEE8B /* App Files */,
 				3A047FFF2A8242BE005FEE8B /* Modules */,
 				3A047FFE2A82429C005FEE8B /* Resources */,
@@ -228,7 +233,6 @@
 		3A047FE72A824153005FEE8B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A04800C2A8248E7005FEE8B /* BSEButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,6 +324,16 @@
 			path = Degular;
 			sourceTree = "<group>";
 		};
+		3A0480152A827661005FEE8B /* Helper Files */ = {
+			isa = PBXGroup;
+			children = (
+				3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */,
+				3A0480182A82782F005FEE8B /* BSETextField.swift */,
+				3A04800C2A8248E7005FEE8B /* BSEButton.swift */,
+			);
+			path = "Helper Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,10 +410,12 @@
 			files = (
 				3A047FF42A824233005FEE8B /* LoginViewController.swift in Sources */,
 				3A0480012A824497005FEE8B /* Constants.swift in Sources */,
+				3A0480172A827671005FEE8B /* BSEHeaderLabel.swift in Sources */,
 				3A047FFC2A82427A005FEE8B /* HomeViewModel.swift in Sources */,
 				3A047FC32A823F62005FEE8B /* AppDelegate.swift in Sources */,
 				3A047FC52A823F62005FEE8B /* SceneDelegate.swift in Sources */,
 				3A047FF62A824256005FEE8B /* LoginViewModel.swift in Sources */,
+				3A0480192A82782F005FEE8B /* BSETextField.swift in Sources */,
 				3A047FEE2A8241B1005FEE8B /* HomeViewController.swift in Sources */,
 				3A047FFA2A824271005FEE8B /* SignupViewModel.swift in Sources */,
 				3A0480122A825807005FEE8B /* BSEValidatorItem.swift in Sources */,

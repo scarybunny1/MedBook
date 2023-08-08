@@ -9,14 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let headerLabel: UILabel = {
-        let l = UILabel()
-        l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "Welcome, \nlog in to continue"
-        l.numberOfLines = 2
-        l.font = UIFont(name: "Degular-Bold", size: 32)
-        return l
-    }()
+    let headerLabel = BSEHeaderLabel(text: "Welcome, \nlog in to continue")
     
     let tfStackView: UIStackView = {
         let sv = UIStackView()
@@ -67,6 +60,7 @@ class LoginViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             headerLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
