@@ -48,7 +48,7 @@ class LoginViewController: UIViewController {
         b.layer.cornerRadius = 8
         b.layer.borderColor = UIColor.black.cgColor
         b.layer.borderWidth = 2
-        b.titleLabel?.font = UIFont(name: "Degular-Medium", size: 22)
+        b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 22)
         b.backgroundColor = UIColor(named: "button-bg")
         return b
     }()

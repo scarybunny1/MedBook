@@ -30,12 +30,12 @@ class LandingViewController: UIViewController {
     let signupButton: UIButton = {
         let b = UIButton()
         b.translatesAutoresizingMaskIntoConstraints = false
-        b.setTitle("SignUp", for: .normal)
+        b.setTitle("Signup", for: .normal)
         b.setTitleColor(.black, for: .normal)
         b.layer.cornerRadius = 8
         b.layer.borderColor = UIColor.black.cgColor
         b.layer.borderWidth = 2
-        b.titleLabel?.font = UIFont(name: "Degular-Medium", size: 22)
+        b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 22)
         b.backgroundColor = UIColor(named: "button-bg")
         return b
     }()
@@ -48,7 +48,7 @@ class LandingViewController: UIViewController {
         b.layer.cornerRadius = 8
         b.layer.borderColor = UIColor.black.cgColor
         b.layer.borderWidth = 2
-        b.titleLabel?.font = UIFont(name: "Degular-Medium", size: 22)
+        b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 22)
         b.backgroundColor = UIColor(named: "button-bg")
         return b
     }()
