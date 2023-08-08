@@ -17,12 +17,13 @@ class BSECheckbox: UIView{
     
     init() {
         super.init(frame: .zero)
-        layer.cornerRadius = 2
+        layer.cornerRadius = 4
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
         clipsToBounds = true
         backgroundColor = UIColor(named: "button-bg")
         addSubview(imageView)
+        imageView.tintColor = UIColor(named: "button-text")
         imageView.contentMode = .scaleAspectFit
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+class SignupViewController: BSEBaseViewController {
     
     //MARK:  UI components
     let headerLabel = BSEHeaderLabel(text: "Welcome \nsign up to continue")
@@ -71,7 +71,6 @@ class SignupViewController: UIViewController {
         submitButton = BSEButton(title: "Let's go", image: UIImage(systemName: "arrow.right"), action: {[weak self] in
             self?.registerUser()
         })
-        view.backgroundColor = UIColor(named: "background")
         view.addSubview(scrollView)
         scrollView.addSubview(headerLabel)
         scrollView.addSubview(tfStackView)
@@ -135,6 +134,7 @@ class SignupViewController: UIViewController {
     
     private func registerUser(){
         //viewmodel:- register will be called
+        viewmodel.registerUser()
     }
     
     private func bind(){
@@ -165,6 +165,10 @@ class SignupViewController: UIViewController {
                 self?.submitButton.disabled()
             }
         }
+        viewmodel.countryList.bind { [weak self] list in
+            self?.countryList = list
+            self?.countrySelector.reloadAllComponents()
+        }
     }
 }
 
@@ -188,9 +192,7 @@ extension SignupViewController: UITextFieldDelegate{
             return true
         }
         
-        if textField == emailTF{
-            viewmodel.validateEmailInput(text)
-        } else{
+        if textField == passwordTF{
             viewmodel.validatePasswordInput(text)
         }
         return true

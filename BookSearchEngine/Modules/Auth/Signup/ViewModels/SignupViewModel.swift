@@ -24,12 +24,33 @@ class SignupViewModel{
     var emailValidation: Observable<EmailValidation> = Observable(.okay)
     var passwordValidation: Observable<[PasswordValidation]> = Observable([])
     
+    
     init(){
         fetchCountryList()
     }
     
     func fetchCountryList(){
-        self.countryList.value = ["Country 1", "Country 2", "Country 3","Country 1", "Country 2", "Country 3","Country 1", "Country 2", "Country 3"]
+        fetchDataFromJSON()
+    }
+    
+    func fetchDataFromJSON() {
+        guard let jsonFilePath = Bundle.main.path(forResource: "CountryList", ofType: "json") else {
+            return
+        }
+        do {
+            let jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath))
+            let decoder = JSONDecoder()
+            let json = try decoder.decode(CountryResponse.self, from: jsonData)
+            countryList.value = json.data.values.compactMap { country in
+                country.country
+            }.sorted()
+        } catch {
+            print("Error decoding JSON: \(error)")
+        }
+    }
+
+    func fetchDataFromNetwork(){
+        
     }
     
     func validateEmailInput(_ email: String){
@@ -60,5 +81,9 @@ class SignupViewModel{
         if pass.rangeOfCharacter(from: CharacterSet(charactersIn: "!@#$%^&*()_-")) != nil{
             passwordValidation.value.append(.specialPresent)
         }
+    }
+    
+    func registerUser(){
+        
     }
 }

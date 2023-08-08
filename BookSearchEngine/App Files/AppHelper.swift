@@ -8,12 +8,21 @@
 import UIKit
 
 class AppHelper{
-    static func getRootVC(_ userLoggedIn: Bool = false) -> UIViewController{
-        if !userLoggedIn{
+    static func getRootVC() -> UIViewController{
+        if UserSessionManager.shared.isLoggedIn{
+            return HomeViewController()
+        } else{
             let nc = UINavigationController(rootViewController: LandingViewController())
             return nc
+        }
+    }
+    
+    static func setRootVC(){
+        if UserSessionManager.shared.isLoggedIn{
+            keyWindow?.rootViewController = HomeViewController()
         } else{
-            return HomeViewController()
+            let nc = UINavigationController(rootViewController: LandingViewController())
+            keyWindow?.rootViewController = nc
         }
     }
 }

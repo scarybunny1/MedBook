@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BSEBaseViewController {
     
     let headerLabel = BSEHeaderLabel(text: "Welcome, \nlog in to continue")
     
@@ -40,7 +40,6 @@ class LoginViewController: UIViewController {
         submitButton = BSEButton(title: "Login", image: UIImage(systemName: "arrow.right"), action: {[weak self] in
             self?.loginUser()
         })
-        view.backgroundColor = UIColor(named: "background")
         view.addSubview(headerLabel)
         view.addSubview(tfStackView)
         tfStackView.addArrangedSubview(emailTF)

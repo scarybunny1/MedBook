@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LandingViewController: UIViewController {
+class LandingViewController: BSEBaseViewController {
     
     //MARK:  View elements
     
@@ -50,7 +50,6 @@ class LandingViewController: UIViewController {
             self?.navigateToSignupPage()
         })
         
-        view.backgroundColor = UIColor(named: "background")
         view.addSubview(headerLabel)
         view.addSubview(imageView)
         view.addSubview(buttonStackView)

@@ -7,7 +7,9 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: BSEBaseViewController {
+    
+    //MARK:  UI components
     
     let headerImageView: UIImageView = {
         let iv = UIImageView()
@@ -37,10 +39,15 @@ class HomeViewController: UIViewController {
         return b
     }()
     
+    //MARK:  Class properties
+    
+    let viewmodel = HomeViewModel()
+    
+    //MARK:  Lifecycle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor(named: "background")
         view.addSubview(headerImageView)
         view.addSubview(headerLabel)
         view.addSubview(titleLabel)
@@ -72,9 +79,9 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    //MARK:  Class Methods
+    
     @objc private func logoutUser(){
-        //viewmodel:- logout method called
-        
-        AppHelper.getRootVC(false)
+        viewmodel.logout()
     }
 }

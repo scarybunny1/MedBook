@@ -12,7 +12,7 @@ class BSEValidatorItem: UIView{
     let checkbox = BSECheckbox()
     let titleLabel: UILabel = {
         let l = UILabel()
-        l.font = UIFont(name: "Degular-Regular", size: 18)
+        l.font = UIFont(name: "Degular-Semibold", size: 18)
         l.translatesAutoresizingMaskIntoConstraints = false
         return l
     }()

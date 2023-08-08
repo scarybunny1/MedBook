@@ -7,6 +7,8 @@
 
 import UIKit
 
+var keyWindow: UIWindow?
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -22,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         window.rootViewController = AppHelper.getRootVC()
         self.window = window
+        keyWindow = window
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

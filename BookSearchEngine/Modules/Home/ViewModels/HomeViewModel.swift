@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+class HomeViewModel{
+    func logout(){
+        UserSessionManager.shared.isLoggedIn = false
+        AppHelper.setRootVC()
+    }
+}

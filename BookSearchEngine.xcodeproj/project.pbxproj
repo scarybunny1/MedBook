@@ -31,6 +31,10 @@
 		3A0480172A827671005FEE8B /* BSEHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */; };
 		3A0480192A82782F005FEE8B /* BSETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480182A82782F005FEE8B /* BSETextField.swift */; };
 		3A04801D2A82AE09005FEE8B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04801C2A82AE09005FEE8B /* Observable.swift */; };
+		3A04801F2A82BB71005FEE8B /* UserSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04801E2A82BB71005FEE8B /* UserSessionManager.swift */; };
+		3A0480222A82C30F005FEE8B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480212A82C30F005FEE8B /* Country.swift */; };
+		3A0480242A82C709005FEE8B /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0480232A82C709005FEE8B /* CountryList.json */; };
+		3A0480262A82C9CA005FEE8B /* BSEBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480252A82C9CA005FEE8B /* BSEBaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +64,10 @@
 		3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEHeaderLabel.swift; sourceTree = "<group>"; };
 		3A0480182A82782F005FEE8B /* BSETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSETextField.swift; sourceTree = "<group>"; };
 		3A04801C2A82AE09005FEE8B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		3A04801E2A82BB71005FEE8B /* UserSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionManager.swift; sourceTree = "<group>"; };
+		3A0480212A82C30F005FEE8B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		3A0480232A82C709005FEE8B /* CountryList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryList.json; sourceTree = "<group>"; };
+		3A0480252A82C9CA005FEE8B /* BSEBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEBaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +221,7 @@
 		3A047FE42A82413D005FEE8B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3A0480212A82C30F005FEE8B /* Country.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -284,6 +293,7 @@
 				3A047FC42A823F62005FEE8B /* SceneDelegate.swift */,
 				3A0480002A824497005FEE8B /* Constants.swift */,
 				3A04800F2A824FE4005FEE8B /* AppHelper.swift */,
+				3A04801E2A82BB71005FEE8B /* UserSessionManager.swift */,
 			);
 			path = "App Files";
 			sourceTree = "<group>";
@@ -333,6 +343,8 @@
 				3A0480182A82782F005FEE8B /* BSETextField.swift */,
 				3A04800C2A8248E7005FEE8B /* BSEButton.swift */,
 				3A04801C2A82AE09005FEE8B /* Observable.swift */,
+				3A0480232A82C709005FEE8B /* CountryList.json */,
+				3A0480252A82C9CA005FEE8B /* BSEBaseViewController.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -398,6 +410,7 @@
 				3A04800B2A8245AC005FEE8B /* Degular-Semibold.ttf in Resources */,
 				3A0480082A8245AC005FEE8B /* Degular-Regular.ttf in Resources */,
 				3A047FCF2A823F65005FEE8B /* LaunchScreen.storyboard in Resources */,
+				3A0480242A82C709005FEE8B /* CountryList.json in Resources */,
 				3A04800A2A8245AC005FEE8B /* Degular-Medium.ttf in Resources */,
 				3A0480092A8245AC005FEE8B /* Degular-Bold.ttf in Resources */,
 				3A047FCC2A823F65005FEE8B /* Assets.xcassets in Resources */,
@@ -415,10 +428,13 @@
 				3A0480012A824497005FEE8B /* Constants.swift in Sources */,
 				3A0480172A827671005FEE8B /* BSEHeaderLabel.swift in Sources */,
 				3A047FFC2A82427A005FEE8B /* HomeViewModel.swift in Sources */,
+				3A0480262A82C9CA005FEE8B /* BSEBaseViewController.swift in Sources */,
 				3A04801D2A82AE09005FEE8B /* Observable.swift in Sources */,
 				3A047FC32A823F62005FEE8B /* AppDelegate.swift in Sources */,
 				3A047FC52A823F62005FEE8B /* SceneDelegate.swift in Sources */,
 				3A047FF62A824256005FEE8B /* LoginViewModel.swift in Sources */,
+				3A0480222A82C30F005FEE8B /* Country.swift in Sources */,
+				3A04801F2A82BB71005FEE8B /* UserSessionManager.swift in Sources */,
 				3A0480192A82782F005FEE8B /* BSETextField.swift in Sources */,
 				3A047FEE2A8241B1005FEE8B /* HomeViewController.swift in Sources */,
 				3A047FFA2A824271005FEE8B /* SignupViewModel.swift in Sources */,
