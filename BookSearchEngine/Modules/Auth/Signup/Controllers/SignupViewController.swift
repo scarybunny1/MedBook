@@ -106,7 +106,7 @@ class SignupViewController: UIViewController {
             
             
             tfStackView.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor),
-            tfStackView.trailingAnchor.constraint(equalTo: headerLabel.trailingAnchor),
+            tfStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             tfStackView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 15),
 
 

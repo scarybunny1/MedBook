@@ -9,7 +9,7 @@ import UIKit
 
 class AppHelper{
     static func getRootVC() -> UIViewController{
-        var userLoggedIn = false
+        let userLoggedIn = false
         if !userLoggedIn{
             let nc = UINavigationController(rootViewController: LandingViewController())
             return nc
