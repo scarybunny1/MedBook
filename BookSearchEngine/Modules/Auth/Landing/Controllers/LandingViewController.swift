@@ -11,8 +11,6 @@ class LandingViewController: UIViewController {
     
     //MARK:  View elements
     
-    let headerLabel = BSEHeaderLabel(text: "MedBook")
-    
     let imageView: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
@@ -21,8 +19,8 @@ class LandingViewController: UIViewController {
         return iv
     }()
     
+    let headerLabel = BSEHeaderLabel(text: "MedBook")
     var signupButton: BSEButton!
-    
     var loginButton: BSEButton!
     
     let buttonStackView: UIStackView = {

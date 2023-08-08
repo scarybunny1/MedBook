@@ -29,7 +29,6 @@ class BSEButton: UIView{
     let stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
-        sv.spacing = 5
         sv.distribution = .fill
         sv.alignment = .fill
         return sv
@@ -47,7 +46,7 @@ class BSEButton: UIView{
         super.init(frame: .zero)
         
         layer.borderWidth = 2
-        layer.borderColor = UIColor.black.cgColor
+        layer.borderColor = UIColor(named: "button-text")?.cgColor ?? UIColor.black.cgColor
         backgroundColor = UIColor(named: "button-bg")
         layer.cornerRadius = 12
         clipsToBounds = true
@@ -56,6 +55,8 @@ class BSEButton: UIView{
         stackView.addArrangedSubview(titleLabel)
         if image != nil{
             imageView.image = image
+            imageView.tintColor = UIColor(named: "button-text")
+            imageView.contentMode = .scaleAspectFit
             stackView.addArrangedSubview(imageView)
         }
         
@@ -87,5 +88,19 @@ class BSEButton: UIView{
     private func configure(){
         imageView.image = image
         titleLabel.text = title
+    }
+    
+    func disabled(){
+        isUserInteractionEnabled = false
+        titleLabel.textColor = UIColor(named: "button-text-disabled")
+        imageView.tintColor = UIColor(named: "button-text-disabled")
+        layer.borderColor = UIColor(named: "button-text-disabled")?.cgColor ?? UIColor.black.cgColor
+    }
+    
+    func enabled(){
+        isUserInteractionEnabled = true
+        titleLabel.textColor = UIColor(named: "button-text")
+        imageView.tintColor = UIColor(named: "button-text")
+        layer.borderColor = UIColor(named: "button-text")?.cgColor ?? UIColor.black.cgColor
     }
 }

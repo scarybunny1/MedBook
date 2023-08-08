@@ -19,12 +19,15 @@ class BSEValidatorItem: UIView{
     
     private var title: String
     
-    var isSelected = false
+    var isSelected = false{
+        didSet{
+            checkbox.isChecked = isSelected
+        }
+    }
     
     init(title: String){
         self.title = title
         super.init(frame: .zero)
-        backgroundColor = .red
         addSubview(checkbox)
         addSubview(titleLabel)
         titleLabel.text = title

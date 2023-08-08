@@ -8,10 +8,10 @@
 import UIKit
 
 class BSECheckbox: UIView{
-    let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+    let imageView = UIImageView()
     var isChecked = false {
         didSet{
-            imageView.image = isChecked ? UIImage(systemName: "checkmark") : UIImage(systemName: "xmark")
+            imageView.image = isChecked ? UIImage(systemName: "checkmark") : nil
         }
     }
     
@@ -32,6 +32,14 @@ class BSECheckbox: UIView{
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.frame = bounds
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 20),
+            imageView.widthAnchor.constraint(equalToConstant: 20)
+        ])
     }
 }

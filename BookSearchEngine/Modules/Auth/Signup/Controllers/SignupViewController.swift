@@ -9,7 +9,9 @@ import UIKit
 
 class SignupViewController: UIViewController {
     
+    //MARK:  UI components
     let headerLabel = BSEHeaderLabel(text: "Welcome \nsign up to continue")
+    var countryList: [String] = []
     
     let tfStackView: UIStackView = {
         let sv = UIStackView()
@@ -24,12 +26,17 @@ class SignupViewController: UIViewController {
     let emailTF: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         return tf
     }()
     
     let passwordTF: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Password"
+        tf.isSecureTextEntry = true
+        tf.autocapitalizationType = .none
+        tf.autocorrectionType = .no
         return tf
     }()
     
@@ -42,29 +49,28 @@ class SignupViewController: UIViewController {
         sv.alignment = .fill
         return sv
     }()
-    let validationItem1 = BSEValidatorItem(title: "Item 1")
-    let validationItem2 = BSEValidatorItem(title: "Item 2")
-    let validationItem3 = BSEValidatorItem(title: "Itme 3")
+    let validationItems = [BSEValidatorItem(title: "Atleast 8 characters"),
+                           BSEValidatorItem(title: "Must contain an uppercase letter"),
+                           BSEValidatorItem(title: "Contains a special character")]
     
     let countrySelector = UIPickerView()
-    let submitButton: UIButton = {
-        let b = UIButton()
-        b.translatesAutoresizingMaskIntoConstraints = false
-        b.setTitle("Let's go", for: .normal)
-        b.setTitleColor(.black, for: .normal)
-        b.layer.cornerRadius = 8
-        b.layer.borderColor = UIColor.black.cgColor
-        b.layer.borderWidth = 2
-        b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 22)
-        b.backgroundColor = UIColor(named: "button-bg")
-        return b
-    }()
-    
+    var submitButton: BSEButton!
     
     let scrollView = UIScrollView()
+    
+    
+    //MARK:  Class properties
+    
+    private var viewmodel = SignupViewModel()
+    
+    //MARK: Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        submitButton = BSEButton(title: "Let's go", image: UIImage(systemName: "arrow.right"), action: {[weak self] in
+            self?.registerUser()
+        })
         view.backgroundColor = UIColor(named: "background")
         view.addSubview(scrollView)
         scrollView.addSubview(headerLabel)
@@ -73,11 +79,18 @@ class SignupViewController: UIViewController {
         tfStackView.addArrangedSubview(passwordTF)
 
         scrollView.addSubview(validationItemsStackView)
-        validationItemsStackView.addArrangedSubview(validationItem1)
-        validationItemsStackView.addArrangedSubview(validationItem2)
-        validationItemsStackView.addArrangedSubview(validationItem3)
+        validationItems.forEach { item in
+            validationItemsStackView.addArrangedSubview(item)
+        }
         scrollView.addSubview(countrySelector)
         scrollView.addSubview(submitButton)
+        
+        countrySelector.dataSource = self
+        countrySelector.delegate = self
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        
+        bind()
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,6 +98,7 @@ class SignupViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         countrySelector.translatesAutoresizingMaskIntoConstraints = false
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),
@@ -117,5 +131,68 @@ class SignupViewController: UIViewController {
             submitButton.trailingAnchor.constraint(equalTo: tfStackView.trailingAnchor),
             submitButton.topAnchor.constraint(equalTo: countrySelector.bottomAnchor, constant: 15),
         ])
+    }
+    
+    private func registerUser(){
+        //viewmodel:- register will be called
+    }
+    
+    private func bind(){
+        viewmodel.countryList.bind { [weak self] list in
+            self?.countryList = list
+        }
+        viewmodel.emailValidation.bind { [weak self] validation in
+            switch validation {
+            case .empty:
+                break
+            case .invalid:
+                break
+            case .okay:
+                break
+            }
+        }
+        viewmodel.passwordValidation.bind { [weak self] validation in
+            for i in 0..<(self?.validationItems.count ?? 0){
+                if validation.compactMap({$0.rawValue}).contains(i){
+                    self?.validationItems[i].isSelected = true
+                } else{
+                    self?.validationItems[i].isSelected = false
+                }
+            }
+            if validation.count == (self?.validationItems.count ?? 0){
+                self?.submitButton.enabled()
+            } else{
+                self?.submitButton.disabled()
+            }
+        }
+    }
+}
+
+extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        countryList.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        countryList[row]
+    }
+}
+
+extension SignupViewController: UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else {
+            return true
+        }
+        
+        if textField == emailTF{
+            viewmodel.validateEmailInput(text)
+        } else{
+            viewmodel.validatePasswordInput(text)
+        }
+        return true
     }
 }

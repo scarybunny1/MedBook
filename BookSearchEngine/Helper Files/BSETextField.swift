@@ -16,6 +16,7 @@ class BSETextField: UIView{
     private let textField = UITextField()
     private let label: UILabel = {
         let l = UILabel()
+        l.font = UIFont(name: "Degular-Regular", size: 10)
         return l
     }()
     weak var delegate: BSETextFieldDelegate?
@@ -34,11 +35,20 @@ class BSETextField: UIView{
     required init?(coder: NSCoder) {
         fatalError()
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        NSLayoutConstraint.activate([
+            
+        ])
+    }
 }
 
 extension BSETextField: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else {
+            
             return true
         }
         

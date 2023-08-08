@@ -33,22 +33,13 @@ class LoginViewController: UIViewController {
         return tf
     }()
     
-    let submitButton: UIButton = {
-        let b = UIButton()
-        b.translatesAutoresizingMaskIntoConstraints = false
-        b.setTitle("Login", for: .normal)
-        b.setTitleColor(.black, for: .normal)
-        b.layer.cornerRadius = 8
-        b.layer.borderColor = UIColor.black.cgColor
-        b.layer.borderWidth = 2
-        b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 22)
-        b.backgroundColor = UIColor(named: "button-bg")
-        return b
-    }()
+    var submitButton: BSEButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        submitButton = BSEButton(title: "Login", image: UIImage(systemName: "arrow.right"), action: {[weak self] in
+            self?.loginUser()
+        })
         view.backgroundColor = UIColor(named: "background")
         view.addSubview(headerLabel)
         view.addSubview(tfStackView)
@@ -61,6 +52,7 @@ class LoginViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             headerLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             headerLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
@@ -74,5 +66,9 @@ class LoginViewController: UIViewController {
             submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             submitButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
         ])
+    }
+    
+    private func loginUser(){
+        //viewmodel:- login will be called
     }
 }

@@ -30,6 +30,7 @@
 		3A0480142A8261B4005FEE8B /* BSECheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480132A8261B4005FEE8B /* BSECheckbox.swift */; };
 		3A0480172A827671005FEE8B /* BSEHeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */; };
 		3A0480192A82782F005FEE8B /* BSETextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480182A82782F005FEE8B /* BSETextField.swift */; };
+		3A04801D2A82AE09005FEE8B /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04801C2A82AE09005FEE8B /* Observable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		3A0480132A8261B4005FEE8B /* BSECheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSECheckbox.swift; sourceTree = "<group>"; };
 		3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEHeaderLabel.swift; sourceTree = "<group>"; };
 		3A0480182A82782F005FEE8B /* BSETextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSETextField.swift; sourceTree = "<group>"; };
+		3A04801C2A82AE09005FEE8B /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -330,6 +332,7 @@
 				3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */,
 				3A0480182A82782F005FEE8B /* BSETextField.swift */,
 				3A04800C2A8248E7005FEE8B /* BSEButton.swift */,
+				3A04801C2A82AE09005FEE8B /* Observable.swift */,
 			);
 			path = "Helper Files";
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				3A0480012A824497005FEE8B /* Constants.swift in Sources */,
 				3A0480172A827671005FEE8B /* BSEHeaderLabel.swift in Sources */,
 				3A047FFC2A82427A005FEE8B /* HomeViewModel.swift in Sources */,
+				3A04801D2A82AE09005FEE8B /* Observable.swift in Sources */,
 				3A047FC32A823F62005FEE8B /* AppDelegate.swift in Sources */,
 				3A047FC52A823F62005FEE8B /* SceneDelegate.swift in Sources */,
 				3A047FF62A824256005FEE8B /* LoginViewModel.swift in Sources */,
