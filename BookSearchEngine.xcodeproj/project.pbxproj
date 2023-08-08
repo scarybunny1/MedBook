@@ -26,6 +26,8 @@
 		3A04800B2A8245AC005FEE8B /* Degular-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A0480072A8245AC005FEE8B /* Degular-Semibold.ttf */; };
 		3A04800D2A8248E7005FEE8B /* BSEButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04800C2A8248E7005FEE8B /* BSEButton.swift */; };
 		3A0480102A824FE4005FEE8B /* AppHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04800F2A824FE4005FEE8B /* AppHelper.swift */; };
+		3A0480122A825807005FEE8B /* BSEValidatorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480112A825807005FEE8B /* BSEValidatorItem.swift */; };
+		3A0480142A8261B4005FEE8B /* BSECheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480132A8261B4005FEE8B /* BSECheckbox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		3A0480072A8245AC005FEE8B /* Degular-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Degular-Semibold.ttf"; sourceTree = "<group>"; };
 		3A04800C2A8248E7005FEE8B /* BSEButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEButton.swift; sourceTree = "<group>"; };
 		3A04800F2A824FE4005FEE8B /* AppHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppHelper.swift; sourceTree = "<group>"; };
+		3A0480112A825807005FEE8B /* BSEValidatorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEValidatorItem.swift; sourceTree = "<group>"; };
+		3A0480132A8261B4005FEE8B /* BSECheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSECheckbox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,8 @@
 		3A047FE22A824135005FEE8B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A0480112A825807005FEE8B /* BSEValidatorItem.swift */,
+				3A0480132A8261B4005FEE8B /* BSECheckbox.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -396,11 +402,13 @@
 				3A047FF62A824256005FEE8B /* LoginViewModel.swift in Sources */,
 				3A047FEE2A8241B1005FEE8B /* HomeViewController.swift in Sources */,
 				3A047FFA2A824271005FEE8B /* SignupViewModel.swift in Sources */,
+				3A0480122A825807005FEE8B /* BSEValidatorItem.swift in Sources */,
 				3A04800D2A8248E7005FEE8B /* BSEButton.swift in Sources */,
 				3A047FF22A8241CF005FEE8B /* LandingViewController.swift in Sources */,
 				3A047FF82A824267005FEE8B /* LandingViewModel.swift in Sources */,
 				3A047FF02A8241C2005FEE8B /* SignupViewController.swift in Sources */,
 				3A0480102A824FE4005FEE8B /* AppHelper.swift in Sources */,
+				3A0480142A8261B4005FEE8B /* BSECheckbox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
