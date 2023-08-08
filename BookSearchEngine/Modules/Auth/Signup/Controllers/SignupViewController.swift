@@ -13,6 +13,16 @@ class SignupViewController: BSEBaseViewController {
     let headerLabel = BSEHeaderLabel(text: "Welcome \nsign up to continue")
     var countryList: [String] = []
     
+    let errorLabel: UILabel = {
+        let l = UILabel()
+        l.text = ""
+        l.textColor = .systemRed
+        l.font = UIFont(name: "Degular-Regular", size: 12)
+        l.numberOfLines = 0
+        l.textAlignment = .left
+        return l
+    }()
+    
     let tfStackView: UIStackView = {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +84,7 @@ class SignupViewController: BSEBaseViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(headerLabel)
         scrollView.addSubview(tfStackView)
+        tfStackView.addArrangedSubview(errorLabel)
         tfStackView.addArrangedSubview(emailTF)
         tfStackView.addArrangedSubview(passwordTF)
 
@@ -133,7 +144,9 @@ class SignupViewController: BSEBaseViewController {
     }
     
     private func registerUser(){
-        //viewmodel:- register will be called
+        viewmodel.email = emailTF.text?.trimmingCharacters(in: .whitespaces) ?? ""
+        viewmodel.password = passwordTF.text?.trimmingCharacters(in: .whitespaces) ?? ""
+        viewmodel.country = countryList[countrySelector.selectedRow(inComponent: 0)]
         viewmodel.registerUser()
     }
     
@@ -143,12 +156,10 @@ class SignupViewController: BSEBaseViewController {
         }
         viewmodel.emailValidation.bind { [weak self] validation in
             switch validation {
-            case .empty:
-                break
-            case .invalid:
-                break
+            case .empty, .invalid, .userExists:
+                self?.showErrorLayout(with: validation.rawValue)
             case .okay:
-                break
+                self?.hideErrorLayout()
             }
         }
         viewmodel.passwordValidation.bind { [weak self] validation in
@@ -170,6 +181,16 @@ class SignupViewController: BSEBaseViewController {
             self?.countrySelector.reloadAllComponents()
         }
     }
+    
+    private func showErrorLayout(with errorMessage: String){
+        errorLabel.text = "*" + errorMessage
+//        submitButton.disabled()
+    }
+    
+    private func hideErrorLayout(){
+        errorLabel.text = ""
+//        submitButton.enabled()
+    }
 }
 
 extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource{
@@ -184,6 +205,10 @@ extension SignupViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         countryList[row]
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        viewmodel.country = countryList[row]
+    }
 }
 
 extension SignupViewController: UITextFieldDelegate{
@@ -194,6 +219,8 @@ extension SignupViewController: UITextFieldDelegate{
         
         if textField == passwordTF{
             viewmodel.validatePasswordInput(text)
+        } else{
+            viewmodel.validateEmailInput(text)
         }
         return true
     }

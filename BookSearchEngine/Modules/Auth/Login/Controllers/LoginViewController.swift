@@ -9,7 +9,19 @@ import UIKit
 
 class LoginViewController: BSEBaseViewController {
     
+    //MARK:  UI components
+    
     let headerLabel = BSEHeaderLabel(text: "Welcome, \nlog in to continue")
+    
+    let errorLabel: UILabel = {
+        let l = UILabel()
+        l.text = ""
+        l.textColor = .systemRed
+        l.font = UIFont(name: "Degular-Regular", size: 12)
+        l.numberOfLines = 0
+        l.textAlignment = .left
+        return l
+    }()
     
     let tfStackView: UIStackView = {
         let sv = UIStackView()
@@ -34,6 +46,12 @@ class LoginViewController: BSEBaseViewController {
     }()
     
     var submitButton: BSEButton!
+    
+    //MARK:  Class Properties
+    
+    private var viewmodel = LoginViewModel()
+    
+    //MARK:  Lifecycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +60,14 @@ class LoginViewController: BSEBaseViewController {
         })
         view.addSubview(headerLabel)
         view.addSubview(tfStackView)
+        tfStackView.addArrangedSubview(errorLabel)
         tfStackView.addArrangedSubview(emailTF)
         tfStackView.addArrangedSubview(passwordTF)
         view.addSubview(submitButton)
+        
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        bind()
     }
 
     override func viewDidLayoutSubviews() {
@@ -67,7 +90,41 @@ class LoginViewController: BSEBaseViewController {
         ])
     }
     
+    //MARK:  Class Methods
+    
     private func loginUser(){
         //viewmodel:- login will be called
+        let email = emailTF.text?.trimmingCharacters(in: .whitespaces) ?? ""
+        let password = passwordTF.text?.trimmingCharacters(in: .whitespaces) ?? ""
+        viewmodel.email = email
+        viewmodel.password = password
+        viewmodel.loginUser()
+    }
+    
+    private func bind(){
+        viewmodel.errorMessage.bind { [weak self] validation in
+            switch validation {
+            case .noSuchUser, .emailEmpty, .passwordEmpty, .emailInvalid, .passwordIncorrect:
+                self?.showErrorLayout(with: validation.rawValue)
+            case .okay:
+                self?.hideErrorLayout()
+            }
+        }
+    }
+    
+    private func showErrorLayout(with errorMessage: String){
+        errorLabel.text = "*" + errorMessage
+//        submitButton.disabled()
+    }
+    
+    private func hideErrorLayout(){
+        errorLabel.text = ""
+//        submitButton.enabled()
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate{
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        view.endEditing(true)
     }
 }

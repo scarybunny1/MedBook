@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum EmailValidation{
-    case empty
-    case invalid
-    case okay
+enum EmailValidation: String{
+    case empty = "Email is required."
+    case invalid = "Email is invalid."
+    case okay = ""
+    case userExists = "User already exists."
 }
 
 enum PasswordValidation: Int{
@@ -24,6 +25,9 @@ class SignupViewModel{
     var emailValidation: Observable<EmailValidation> = Observable(.okay)
     var passwordValidation: Observable<[PasswordValidation]> = Observable([])
     
+    var email = ""
+    var password = ""
+    var country = ""
     
     init(){
         fetchCountryList()
@@ -62,8 +66,9 @@ class SignupViewModel{
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
         
-        if !emailPredicate.evaluate(with: email) {
+        guard emailPredicate.evaluate(with: email) else {
             emailValidation.value = .invalid
+            return
         }
         
         emailValidation.value = .okay
@@ -84,6 +89,12 @@ class SignupViewModel{
     }
     
     func registerUser(){
-        
+        if let user = User.getUser(email: email){
+            emailValidation.value = .userExists
+        } else{
+            User.addUser(email: email, password: password, country: country)
+            UserSessionManager.shared.isLoggedIn = true
+            AppHelper.setRootVC()
+        }
     }
 }

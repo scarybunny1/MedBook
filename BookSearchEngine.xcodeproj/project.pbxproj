@@ -35,6 +35,9 @@
 		3A0480222A82C30F005FEE8B /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480212A82C30F005FEE8B /* Country.swift */; };
 		3A0480242A82C709005FEE8B /* CountryList.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A0480232A82C709005FEE8B /* CountryList.json */; };
 		3A0480262A82C9CA005FEE8B /* BSEBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480252A82C9CA005FEE8B /* BSEBaseViewController.swift */; };
+		3A0480292A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480272A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld */; };
+		3A04802B2A82E005005FEE8B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04802A2A82E005005FEE8B /* CoreDataManager.swift */; };
+		3A04802D2A82E3C5005FEE8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04802C2A82E3C5005FEE8B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,9 @@
 		3A0480212A82C30F005FEE8B /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		3A0480232A82C709005FEE8B /* CountryList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryList.json; sourceTree = "<group>"; };
 		3A0480252A82C9CA005FEE8B /* BSEBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSEBaseViewController.swift; sourceTree = "<group>"; };
+		3A0480282A82DF2A005FEE8B /* BookSearchEngine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookSearchEngine.xcdatamodel; sourceTree = "<group>"; };
+		3A04802A2A82E005005FEE8B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		3A04802C2A82E3C5005FEE8B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 				3A047FFF2A8242BE005FEE8B /* Modules */,
 				3A047FFE2A82429C005FEE8B /* Resources */,
 				3A047FD02A823F65005FEE8B /* Info.plist */,
+				3A0480272A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld */,
 			);
 			path = BookSearchEngine;
 			sourceTree = "<group>";
@@ -222,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				3A0480212A82C30F005FEE8B /* Country.swift */,
+				3A04802C2A82E3C5005FEE8B /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,6 +302,7 @@
 				3A0480002A824497005FEE8B /* Constants.swift */,
 				3A04800F2A824FE4005FEE8B /* AppHelper.swift */,
 				3A04801E2A82BB71005FEE8B /* UserSessionManager.swift */,
+				3A04802A2A82E005005FEE8B /* CoreDataManager.swift */,
 			);
 			path = "App Files";
 			sourceTree = "<group>";
@@ -432,6 +441,7 @@
 				3A04801D2A82AE09005FEE8B /* Observable.swift in Sources */,
 				3A047FC32A823F62005FEE8B /* AppDelegate.swift in Sources */,
 				3A047FC52A823F62005FEE8B /* SceneDelegate.swift in Sources */,
+				3A04802B2A82E005005FEE8B /* CoreDataManager.swift in Sources */,
 				3A047FF62A824256005FEE8B /* LoginViewModel.swift in Sources */,
 				3A0480222A82C30F005FEE8B /* Country.swift in Sources */,
 				3A04801F2A82BB71005FEE8B /* UserSessionManager.swift in Sources */,
@@ -443,7 +453,9 @@
 				3A047FF22A8241CF005FEE8B /* LandingViewController.swift in Sources */,
 				3A047FF82A824267005FEE8B /* LandingViewModel.swift in Sources */,
 				3A047FF02A8241C2005FEE8B /* SignupViewController.swift in Sources */,
+				3A04802D2A82E3C5005FEE8B /* User.swift in Sources */,
 				3A0480102A824FE4005FEE8B /* AppHelper.swift in Sources */,
+				3A0480292A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld in Sources */,
 				3A0480142A8261B4005FEE8B /* BSECheckbox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -652,6 +664,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3A0480272A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3A0480282A82DF2A005FEE8B /* BookSearchEngine.xcdatamodel */,
+			);
+			currentVersion = 3A0480282A82DF2A005FEE8B /* BookSearchEngine.xcdatamodel */;
+			path = BookSearchEngine.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3A047FB72A823F62005FEE8B /* Project object */;
 }
