@@ -13,6 +13,8 @@ enum LoginValidation: String{
     case passwordEmpty = "Password is required."
     case emailInvalid = "Email is invalid."
     case passwordIncorrect = "Password is incorrect."
+    case emailValid
+    case passwordValid
     case okay
 }
 
@@ -22,7 +24,8 @@ class LoginViewModel{
     
     var errorMessage: Observable<LoginValidation> = Observable(.okay)
     
-    func validate() -> Bool{
+    @discardableResult
+    func validateEmailInput(_ email: String) -> Bool{
         guard !email.isEmpty else{
             errorMessage.value = .emailEmpty
             return false
@@ -35,18 +38,23 @@ class LoginViewModel{
             errorMessage.value = .emailInvalid
             return false
         }
-        
+        errorMessage.value = .emailValid
+        return true
+    }
+    
+    @discardableResult
+    func validatePasswordInput(_ password: String) -> Bool{
         guard !password.isEmpty else{
             errorMessage.value = .passwordEmpty
             return false
         }
         
-        errorMessage.value = .okay
+        errorMessage.value = .passwordValid
         return true
     }
     
-    func loginUser(){
-        if validate(){
+    func loginUser(email: String, password: String){
+        if validateEmailInput(email) && validatePasswordInput(password){
             //user login
             guard let user = User.getUser(email: email) else{
                 errorMessage.value = .noSuchUser

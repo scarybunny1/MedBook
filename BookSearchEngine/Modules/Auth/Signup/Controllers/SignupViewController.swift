@@ -27,7 +27,7 @@ class SignupViewController: BSEBaseViewController {
         let sv = UIStackView()
         sv.translatesAutoresizingMaskIntoConstraints = false
         sv.axis = .vertical
-        sv.spacing = 10
+        sv.spacing = 15
         sv.distribution = .fillEqually
         sv.alignment = .fill
         return sv
@@ -38,6 +38,12 @@ class SignupViewController: BSEBaseViewController {
         tf.placeholder = "Email"
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
+        tf.keyboardType = .emailAddress
+        tf.borderStyle = .roundedRect
+        tf.font = UIFont(name: "Degular-Medium", size: 16)
+        tf.tag = 1
+        tf.returnKeyType = .next
+        tf.textContentType = .none
         return tf
     }()
     
@@ -47,6 +53,12 @@ class SignupViewController: BSEBaseViewController {
         tf.isSecureTextEntry = true
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
+        tf.borderStyle = .roundedRect
+        tf.font = UIFont(name: "Degular-Medium", size: 16)
+        tf.tag = 2
+        tf.returnKeyType = .done
+        tf.textContentType = .none
+
         return tf
     }()
     
@@ -65,13 +77,16 @@ class SignupViewController: BSEBaseViewController {
     
     let countrySelector = UIPickerView()
     var submitButton: BSEButton!
-    
     let scrollView = UIScrollView()
-    
     
     //MARK:  Class properties
     
     private var viewmodel = SignupViewModel()
+    private var emailValidated = false
+    private var passwordValidated = false
+    private var enableSubmitButton: Bool {
+        emailValidated && passwordValidated
+    }
     
     //MARK: Lifecycle methods
 
@@ -109,6 +124,8 @@ class SignupViewController: BSEBaseViewController {
         countrySelector.translatesAutoresizingMaskIntoConstraints = false
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         submitButton.translatesAutoresizingMaskIntoConstraints = false
+        emailTF.translatesAutoresizingMaskIntoConstraints = false
+        passwordTF.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),
@@ -122,24 +139,27 @@ class SignupViewController: BSEBaseViewController {
             headerLabel.trailingAnchor.constraint(greaterThanOrEqualTo: scrollView.trailingAnchor, constant: -16),
             
             
-            tfStackView.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor),
+            emailTF.heightAnchor.constraint(equalToConstant: 40),
+            passwordTF.heightAnchor.constraint(equalToConstant: 40),
+            
+            tfStackView.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor, constant: 10),
             tfStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             tfStackView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 15),
 
 
             validationItemsStackView.leadingAnchor.constraint(equalTo: tfStackView.leadingAnchor),
             validationItemsStackView.trailingAnchor.constraint(equalTo: tfStackView.trailingAnchor),
-            validationItemsStackView.topAnchor.constraint(equalTo: tfStackView.bottomAnchor, constant: 15),
+            validationItemsStackView.topAnchor.constraint(equalTo: tfStackView.bottomAnchor, constant: 25),
 
 
             countrySelector.leadingAnchor.constraint(equalTo: tfStackView.leadingAnchor),
             countrySelector.trailingAnchor.constraint(equalTo: tfStackView.trailingAnchor),
-            countrySelector.topAnchor.constraint(equalTo: validationItemsStackView.bottomAnchor, constant: 15),
+            countrySelector.topAnchor.constraint(equalTo: validationItemsStackView.bottomAnchor, constant: 25),
             countrySelector.heightAnchor.constraint(equalToConstant: 140),
 
             submitButton.leadingAnchor.constraint(equalTo: tfStackView.leadingAnchor),
             submitButton.trailingAnchor.constraint(equalTo: tfStackView.trailingAnchor),
-            submitButton.topAnchor.constraint(equalTo: countrySelector.bottomAnchor, constant: 15),
+            submitButton.topAnchor.constraint(equalTo: countrySelector.bottomAnchor, constant: 25),
         ])
     }
     
@@ -157,8 +177,10 @@ class SignupViewController: BSEBaseViewController {
         viewmodel.emailValidation.bind { [weak self] validation in
             switch validation {
             case .empty, .invalid, .userExists:
+                self?.emailValidated = false
                 self?.showErrorLayout(with: validation.rawValue)
             case .okay:
+                self?.emailValidated = true
                 self?.hideErrorLayout()
             }
         }
@@ -171,25 +193,33 @@ class SignupViewController: BSEBaseViewController {
                 }
             }
             if validation.count == (self?.validationItems.count ?? 0){
-                self?.submitButton.enabled()
+                self?.passwordValidated = true
             } else{
-                self?.submitButton.disabled()
+                self?.passwordValidated = false
             }
+            
+            self?.enableButton()
         }
         viewmodel.countryList.bind { [weak self] list in
             self?.countryList = list
             self?.countrySelector.reloadAllComponents()
+            let defaultSelectedRow = self?.countryList.firstIndex(of: "India") ?? 0
+            self?.countrySelector.selectRow(defaultSelectedRow, inComponent: 0, animated: false)
         }
+    }
+    
+    private func enableButton(){
+        enableSubmitButton ? submitButton.enabled() : submitButton.disabled()
     }
     
     private func showErrorLayout(with errorMessage: String){
         errorLabel.text = "*" + errorMessage
-//        submitButton.disabled()
+        enableButton()
     }
     
     private func hideErrorLayout(){
         errorLabel.text = ""
-//        submitButton.enabled()
+        enableButton()
     }
 }
 
@@ -219,9 +249,24 @@ extension SignupViewController: UITextFieldDelegate{
         
         if textField == passwordTF{
             viewmodel.validatePasswordInput(text)
-        } else{
-            viewmodel.validateEmailInput(text)
         }
         return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        if let nextTextField = view.viewWithTag(nextTag) as? UITextField {
+            nextTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTF{
+            let email = textField.text?.trimmingCharacters(in: .whitespaces) ?? ""
+            viewmodel.validateEmailInput(email)
+        }
     }
 }

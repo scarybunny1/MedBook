@@ -15,6 +15,7 @@ class HomeViewController: BSEBaseViewController {
         let iv = UIImageView()
         iv.image = UIImage(systemName: "book.fill")
         iv.contentMode = .scaleAspectFit
+        iv.tintColor = UIColor.black
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -85,3 +86,9 @@ class HomeViewController: BSEBaseViewController {
         viewmodel.logout()
     }
 }
+
+//TODO:  Improve Folder structure
+//TODO:  App Theme settings
+//TODO:  Button Imageview arrow
+//TODO:  Background image shape
+//TODO:  Network call for brownie points

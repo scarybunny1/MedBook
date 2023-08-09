@@ -18,4 +18,8 @@ class BSEBaseViewController: UIViewController {
         view.backgroundColor = UIColor(named: "background")
     }
 
+    @objc func handleTap() {
+        self.view.endEditing(true)
+    }
+
 }

@@ -10,6 +10,7 @@ import Foundation
 class UserSessionManager{
     static let shared = UserSessionManager()
     
+    private init() {}
     private let userDefaults = UserDefaults.standard
     
     var isLoggedIn: Bool{
