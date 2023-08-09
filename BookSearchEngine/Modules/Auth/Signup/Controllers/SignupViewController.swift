@@ -78,6 +78,15 @@ class SignupViewController: BSEBaseViewController {
     let countrySelector = UIPickerView()
     var submitButton: BSEButton!
     let scrollView = UIScrollView()
+    let contentView: UIStackView = {
+        let sv = UIStackView()
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.axis = .vertical
+        sv.spacing = 25
+        sv.distribution = .fill
+        sv.alignment = .fill
+        return sv
+    }()
     
     //MARK:  Class properties
     
@@ -97,18 +106,19 @@ class SignupViewController: BSEBaseViewController {
             self?.registerUser()
         })
         view.addSubview(scrollView)
-        scrollView.addSubview(headerLabel)
-        scrollView.addSubview(tfStackView)
+        scrollView.addSubview(contentView)
+        contentView.addArrangedSubview(headerLabel)
+        contentView.addArrangedSubview(tfStackView)
         tfStackView.addArrangedSubview(errorLabel)
         tfStackView.addArrangedSubview(emailTF)
         tfStackView.addArrangedSubview(passwordTF)
 
-        scrollView.addSubview(validationItemsStackView)
+        contentView.addArrangedSubview(validationItemsStackView)
         validationItems.forEach { item in
             validationItemsStackView.addArrangedSubview(item)
         }
-        scrollView.addSubview(countrySelector)
-        scrollView.addSubview(submitButton)
+        contentView.addArrangedSubview(countrySelector)
+        contentView.addArrangedSubview(submitButton)
         
         countrySelector.dataSource = self
         countrySelector.delegate = self
@@ -129,39 +139,20 @@ class SignupViewController: BSEBaseViewController {
         emailTF.translatesAutoresizingMaskIntoConstraints = false
         passwordTF.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scrollView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            scrollView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 1),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            
-            headerLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16),
-            headerLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: scrollView.leadingAnchor, multiplier: 2),
-            headerLabel.trailingAnchor.constraint(greaterThanOrEqualTo: scrollView.trailingAnchor, constant: -16),
-            
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 20),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -20),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 20),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -20),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -40),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
             emailTF.heightAnchor.constraint(equalToConstant: 40),
             passwordTF.heightAnchor.constraint(equalToConstant: 40),
-            
-            tfStackView.leadingAnchor.constraint(equalTo: headerLabel.leadingAnchor, constant: 10),
-            tfStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            tfStackView.topAnchor.constraint(equalTo: headerLabel.bottomAnchor, constant: 15),
-
-
-            validationItemsStackView.leadingAnchor.constraint(equalTo: tfStackView.leadingAnchor),
-            validationItemsStackView.trailingAnchor.constraint(equalTo: tfStackView.trailingAnchor),
-            validationItemsStackView.topAnchor.constraint(equalTo: tfStackView.bottomAnchor, constant: 25),
-
-
-            countrySelector.leadingAnchor.constraint(equalTo: tfStackView.leadingAnchor),
-            countrySelector.trailingAnchor.constraint(equalTo: tfStackView.trailingAnchor),
-            countrySelector.topAnchor.constraint(equalTo: validationItemsStackView.bottomAnchor, constant: 25),
-            countrySelector.heightAnchor.constraint(equalToConstant: 140),
-
-            submitButton.leadingAnchor.constraint(equalTo: tfStackView.leadingAnchor),
-            submitButton.trailingAnchor.constraint(equalTo: tfStackView.trailingAnchor),
-            submitButton.topAnchor.constraint(equalTo: countrySelector.bottomAnchor, constant: 25),
         ])
     }
     

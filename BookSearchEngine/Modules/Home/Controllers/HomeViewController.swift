@@ -87,7 +87,6 @@ class HomeViewController: BSEBaseViewController {
     }
 }
 
-//TODO:  Show toast message
 //TODO:  Improve Folder structure
 //TODO:  App Theme settings
 //TODO:  Button Imageview arrow
