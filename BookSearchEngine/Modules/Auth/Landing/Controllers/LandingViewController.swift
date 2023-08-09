@@ -15,11 +15,11 @@ class LandingViewController: BSEBaseViewController {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "landing")
+        iv.image = Constants.landingPageImage
         return iv
     }()
     
-    let headerLabel = BSEHeaderLabel(text: "MedBook")
+    let headerLabel = BSEHeaderLabel(text: Constants.langingPageTitle)
     var signupButton: BSEButton!
     var loginButton: BSEButton!
     
@@ -42,11 +42,11 @@ class LandingViewController: BSEBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton = BSEButton(title: "Login", action: {[weak self] in
+        loginButton = BSEButton(title: Constants.landingPageLoginButtonTitle, action: {[weak self] in
             self?.navigateToLoginPage()
         })
         
-        signupButton = BSEButton(title: "Signup", action: {[weak self] in
+        signupButton = BSEButton(title: Constants.landingPageSignupButtonTitle, action: {[weak self] in
             self?.navigateToSignupPage()
         })
         

@@ -10,14 +10,14 @@ import UIKit
 class SignupViewController: BSEBaseViewController {
     
     //MARK:  UI components
-    let headerLabel = BSEHeaderLabel(text: "Welcome \nsign up to continue")
+    let headerLabel = BSEHeaderLabel(text: Constants.signupPageTitle)
     var countryList: [String] = []
     
     let errorLabel: UILabel = {
         let l = UILabel()
         l.text = ""
         l.textColor = .systemRed
-        l.font = UIFont(name: "Degular-Regular", size: 12)
+        l.font = Constants.Fonts.errorLabelFont
         l.numberOfLines = 0
         l.textAlignment = .left
         return l
@@ -35,12 +35,12 @@ class SignupViewController: BSEBaseViewController {
     
     let emailTF: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        tf.placeholder = Constants.signupPageEmailTFPlaceholder
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.keyboardType = .emailAddress
         tf.borderStyle = .roundedRect
-        tf.font = UIFont(name: "Degular-Medium", size: 16)
+        tf.font = Constants.Fonts.textFieldFont
         tf.tag = 1
         tf.returnKeyType = .next
         tf.textContentType = .none
@@ -49,12 +49,12 @@ class SignupViewController: BSEBaseViewController {
     
     let passwordTF: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        tf.placeholder = Constants.signupPagePasswordTFPlaceholder
         tf.isSecureTextEntry = true
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.borderStyle = .roundedRect
-        tf.font = UIFont(name: "Degular-Medium", size: 16)
+        tf.font = Constants.Fonts.textFieldFont
         tf.tag = 2
         tf.returnKeyType = .done
         tf.textContentType = .none
@@ -93,7 +93,7 @@ class SignupViewController: BSEBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        submitButton = BSEButton(title: "Let's go", image: UIImage(systemName: "arrow.right"), action: {[weak self] in
+        submitButton = BSEButton(title: Constants.signupPageSubmitButtonTitle, image: Constants.Images.arrowRight, action: {[weak self] in
             self?.registerUser()
         })
         view.addSubview(scrollView)
@@ -203,7 +203,7 @@ class SignupViewController: BSEBaseViewController {
         viewmodel.countryList.bind { [weak self] list in
             self?.countryList = list
             self?.countrySelector.reloadAllComponents()
-            let defaultSelectedRow = self?.countryList.firstIndex(of: "India") ?? 0
+            let defaultSelectedRow = self?.countryList.firstIndex(of: Constants.defaultCountry) ?? 0
             self?.countrySelector.selectRow(defaultSelectedRow, inComponent: 0, animated: false)
         }
     }

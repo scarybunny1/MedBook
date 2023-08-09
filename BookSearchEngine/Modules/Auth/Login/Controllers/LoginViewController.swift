@@ -11,13 +11,13 @@ class LoginViewController: BSEBaseViewController {
     
     //MARK:  UI components
     
-    let headerLabel = BSEHeaderLabel(text: "Welcome, \nlog in to continue")
+    let headerLabel = BSEHeaderLabel(text: Constants.loginPageTitle)
     
     let errorLabel: UILabel = {
         let l = UILabel()
         l.text = ""
         l.textColor = .systemRed
-        l.font = UIFont(name: "Degular-Regular", size: 12)
+        l.font = Constants.Fonts.errorLabelFont
         l.numberOfLines = 0
         l.textAlignment = .left
         return l
@@ -35,12 +35,12 @@ class LoginViewController: BSEBaseViewController {
     
     let emailTF: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Email"
+        tf.placeholder = Constants.loginPageEmailTFPlaceholder
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.keyboardType = .emailAddress
         tf.borderStyle = .roundedRect
-        tf.font = UIFont(name: "Degular-Medium", size: 16)
+        tf.font = Constants.Fonts.textFieldFont
         tf.tag = 1
         tf.returnKeyType = .next
         tf.textContentType = .none
@@ -49,12 +49,12 @@ class LoginViewController: BSEBaseViewController {
     
     let passwordTF: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Password"
+        tf.placeholder = Constants.loginPagePasswordTFPlaceholder
         tf.isSecureTextEntry = true
         tf.autocapitalizationType = .none
         tf.autocorrectionType = .no
         tf.borderStyle = .roundedRect
-        tf.font = UIFont(name: "Degular-Medium", size: 16)
+        tf.font = Constants.Fonts.textFieldFont
         tf.tag = 2
         tf.returnKeyType = .done
         tf.textContentType = .none
@@ -76,7 +76,7 @@ class LoginViewController: BSEBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        submitButton = BSEButton(title: "Login", image: UIImage(systemName: "arrow.right"), action: {[weak self] in
+        submitButton = BSEButton(title: Constants.loginPageSubmitButtonTitle, image: Constants.Images.arrowRight, action: {[weak self] in
             self?.loginUser()
         })
         view.addSubview(headerLabel)

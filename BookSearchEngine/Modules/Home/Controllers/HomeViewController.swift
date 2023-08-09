@@ -13,21 +13,21 @@ class HomeViewController: BSEBaseViewController {
     
     let headerImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(systemName: "book.fill")
+        iv.image = Constants.Images.homePageHeaderImage
         iv.contentMode = .scaleAspectFit
         iv.tintColor = UIColor.black
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
     
-    let headerLabel = BSEHeaderLabel(text: "MedBook")
+    let headerLabel = BSEHeaderLabel(text: Constants.homePageHeaderTitle)
     
     let titleLabel: UILabel = {
         let l = UILabel()
         l.translatesAutoresizingMaskIntoConstraints = false
-        l.text = "Which topic interests \nyou today?"
+        l.text = Constants.homePageTitle
         l.numberOfLines = 0
-        l.font = UIFont(name: "Degular-Medium", size: 28)
+        l.font = Constants.Fonts.titleFont
         return l
     }()
 
@@ -87,6 +87,7 @@ class HomeViewController: BSEBaseViewController {
     }
 }
 
+//TODO:  Show toast message
 //TODO:  Improve Folder structure
 //TODO:  App Theme settings
 //TODO:  Button Imageview arrow
