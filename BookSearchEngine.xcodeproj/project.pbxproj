@@ -19,7 +19,7 @@
 		3A047FF82A824267005FEE8B /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A047FF72A824267005FEE8B /* LandingViewModel.swift */; };
 		3A047FFA2A824271005FEE8B /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A047FF92A824271005FEE8B /* SignupViewModel.swift */; };
 		3A047FFC2A82427A005FEE8B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A047FFB2A82427A005FEE8B /* HomeViewModel.swift */; };
-		3A0480012A824497005FEE8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480002A824497005FEE8B /* Constants.swift */; };
+		3A0480012A824497005FEE8B /* Constants+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480002A824497005FEE8B /* Constants+Theme.swift */; };
 		3A0480082A8245AC005FEE8B /* Degular-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A0480042A8245AC005FEE8B /* Degular-Regular.ttf */; };
 		3A0480092A8245AC005FEE8B /* Degular-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A0480052A8245AC005FEE8B /* Degular-Bold.ttf */; };
 		3A04800A2A8245AC005FEE8B /* Degular-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A0480062A8245AC005FEE8B /* Degular-Medium.ttf */; };
@@ -59,7 +59,7 @@
 		3A047FF72A824267005FEE8B /* LandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModel.swift; sourceTree = "<group>"; };
 		3A047FF92A824271005FEE8B /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		3A047FFB2A82427A005FEE8B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		3A0480002A824497005FEE8B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3A0480002A824497005FEE8B /* Constants+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constants+Theme.swift"; sourceTree = "<group>"; };
 		3A0480042A8245AC005FEE8B /* Degular-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Degular-Regular.ttf"; sourceTree = "<group>"; };
 		3A0480052A8245AC005FEE8B /* Degular-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Degular-Bold.ttf"; sourceTree = "<group>"; };
 		3A0480062A8245AC005FEE8B /* Degular-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Degular-Medium.ttf"; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 			children = (
 				3A047FC22A823F62005FEE8B /* AppDelegate.swift */,
 				3A047FC42A823F62005FEE8B /* SceneDelegate.swift */,
-				3A0480002A824497005FEE8B /* Constants.swift */,
+				3A0480002A824497005FEE8B /* Constants+Theme.swift */,
 				3A04800F2A824FE4005FEE8B /* AppHelper.swift */,
 				3A04801E2A82BB71005FEE8B /* UserSessionManager.swift */,
 				3A04802A2A82E005005FEE8B /* CoreDataManager.swift */,
@@ -451,7 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A047FF42A824233005FEE8B /* LoginViewController.swift in Sources */,
-				3A0480012A824497005FEE8B /* Constants.swift in Sources */,
+				3A0480012A824497005FEE8B /* Constants+Theme.swift in Sources */,
 				3A0480172A827671005FEE8B /* BSEHeaderLabel.swift in Sources */,
 				3A047FFC2A82427A005FEE8B /* HomeViewModel.swift in Sources */,
 				3A0480262A82C9CA005FEE8B /* BSEBaseViewController.swift in Sources */,

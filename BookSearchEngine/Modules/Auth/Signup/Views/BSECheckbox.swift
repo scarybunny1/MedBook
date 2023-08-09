@@ -11,7 +11,7 @@ class BSECheckbox: UIView{
     let imageView = UIImageView()
     var isChecked = false {
         didSet{
-            imageView.image = isChecked ? UIImage(systemName: "checkmark") : nil
+            imageView.image = isChecked ? Constants.Images.checkmark : nil
         }
     }
     
@@ -21,9 +21,9 @@ class BSECheckbox: UIView{
         layer.borderColor = UIColor.black.cgColor
         layer.borderWidth = 2
         clipsToBounds = true
-        backgroundColor = UIColor(named: "button-bg")
+        backgroundColor = Theme.buttonBackground
         addSubview(imageView)
-        imageView.tintColor = UIColor(named: "button-text")
+        imageView.tintColor = Theme.appTintColor
         imageView.contentMode = .scaleAspectFit
     }
     

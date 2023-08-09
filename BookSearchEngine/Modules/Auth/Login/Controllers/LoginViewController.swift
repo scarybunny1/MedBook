@@ -16,7 +16,7 @@ class LoginViewController: BSEBaseViewController {
     let errorLabel: UILabel = {
         let l = UILabel()
         l.text = ""
-        l.textColor = .systemRed
+        l.textColor = Theme.errorLabelColor
         l.font = Constants.Fonts.errorLabelFont
         l.numberOfLines = 0
         l.textAlignment = .left
@@ -144,7 +144,7 @@ class LoginViewController: BSEBaseViewController {
             case .passwordIncorrect, .noSuchUser:
                 self?.showErrorLayout(with: validation.rawValue)
             case .okay:
-                return
+                break
             }
             self?.enableButton()
         }

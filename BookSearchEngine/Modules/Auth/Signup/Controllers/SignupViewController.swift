@@ -16,7 +16,7 @@ class SignupViewController: BSEBaseViewController {
     let errorLabel: UILabel = {
         let l = UILabel()
         l.text = ""
-        l.textColor = .systemRed
+        l.textColor = Theme.errorLabelColor
         l.font = Constants.Fonts.errorLabelFont
         l.numberOfLines = 0
         l.textAlignment = .left

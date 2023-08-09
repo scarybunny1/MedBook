@@ -15,7 +15,7 @@ class HomeViewController: BSEBaseViewController {
         let iv = UIImageView()
         iv.image = Constants.Images.homePageHeaderImage
         iv.contentMode = .scaleAspectFit
-        iv.tintColor = UIColor.black
+        iv.tintColor = Theme.appTintColor
         iv.translatesAutoresizingMaskIntoConstraints = false
         return iv
     }()
@@ -35,7 +35,7 @@ class HomeViewController: BSEBaseViewController {
         let b = UIButton()
         b.translatesAutoresizingMaskIntoConstraints = false
         b.setTitle("Logout", for: .normal)
-        b.setTitleColor(.systemRed, for: .normal)
+        b.setTitleColor(Theme.logoutButtonColor, for: .normal)
         b.titleLabel?.font = UIFont(name: "Degular-Semibold", size: 18)
         return b
     }()
@@ -89,6 +89,3 @@ class HomeViewController: BSEBaseViewController {
 
 //TODO:  Improve Folder structure
 //TODO:  App Theme settings
-//TODO:  Button Imageview arrow
-//TODO:  Background image shape
-//TODO:  Network call for brownie points

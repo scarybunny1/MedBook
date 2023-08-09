@@ -13,7 +13,7 @@ class BSEBaseViewController: UIViewController {
         super.viewDidLoad()
 
         let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        backButton.tintColor = UIColor.black
+        backButton.tintColor = Theme.appTintColor
         navigationItem.backBarButtonItem = backButton
         view.backgroundColor = UIColor(named: "background")
     }

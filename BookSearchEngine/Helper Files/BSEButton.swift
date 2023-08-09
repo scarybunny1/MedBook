@@ -19,8 +19,8 @@ enum Padding{
 class BSEButton: UIView{
     let titleLabel: UILabel = {
         let l = UILabel()
-        l.font = UIFont(name: "Degular-Semibold", size: 22)
-        l.textColor = UIColor(named: "button-text")
+        l.font = Constants.Fonts.buttonTextFont
+        l.textColor = Theme.buttonTextColor
         l.textAlignment = .center
         return l
     }()
@@ -29,7 +29,7 @@ class BSEButton: UIView{
     let stackView: UIStackView = {
         let sv = UIStackView()
         sv.axis = .horizontal
-        sv.distribution = .fill
+        sv.distribution = .fillEqually
         sv.alignment = .fill
         return sv
     }()
@@ -46,18 +46,24 @@ class BSEButton: UIView{
         super.init(frame: .zero)
         
         layer.borderWidth = 2
-        layer.borderColor = UIColor(named: "button-text")?.cgColor ?? UIColor.black.cgColor
-        backgroundColor = UIColor(named: "button-bg")
+        layer.borderColor = Theme.buttonTextColor?.cgColor ?? UIColor.black.cgColor
+        backgroundColor = Theme.buttonBackground
         layer.cornerRadius = 12
         clipsToBounds = true
         
         addSubview(stackView)
-        stackView.addArrangedSubview(titleLabel)
+        
         if image != nil{
+            stackView.addArrangedSubview(UIView())
+            stackView.addArrangedSubview(UIView())
+            stackView.addArrangedSubview(titleLabel)
             imageView.image = image
-            imageView.tintColor = UIColor(named: "button-text")
+            imageView.tintColor = Theme.appTintColor
             imageView.contentMode = .scaleAspectFit
             stackView.addArrangedSubview(imageView)
+            stackView.addArrangedSubview(UIView())
+        } else{
+            stackView.addArrangedSubview(titleLabel)
         }
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
@@ -92,15 +98,15 @@ class BSEButton: UIView{
     
     func disabled(){
         isUserInteractionEnabled = false
-        titleLabel.textColor = UIColor(named: "button-text-disabled")
-        imageView.tintColor = UIColor(named: "button-text-disabled")
-        layer.borderColor = UIColor(named: "button-text-disabled")?.cgColor ?? UIColor.black.cgColor
+        titleLabel.textColor = Theme.buttonDisabledTextColor
+        imageView.tintColor = Theme.buttonDisabledTextColor
+        layer.borderColor = Theme.buttonDisabledTextColor?.cgColor ?? UIColor.black.cgColor
     }
     
     func enabled(){
         isUserInteractionEnabled = true
-        titleLabel.textColor = UIColor(named: "button-text")
-        imageView.tintColor = UIColor(named: "button-text")
-        layer.borderColor = UIColor(named: "button-text")?.cgColor ?? UIColor.black.cgColor
+        titleLabel.textColor = Theme.buttonTextColor
+        imageView.tintColor = .black
+        layer.borderColor = Theme.buttonTextColor?.cgColor ?? UIColor.black.cgColor
     }
 }
