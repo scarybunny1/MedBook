@@ -114,6 +114,7 @@
 		3A047FC12A823F62005FEE8B /* BookSearchEngine */ = {
 			isa = PBXGroup;
 			children = (
+				3A977ECA2A83817200B1BF09 /* App Views */,
 				3A0480152A827661005FEE8B /* Helper Files */,
 				3A047FFD2A82428C005FEE8B /* App Files */,
 				3A047FFF2A8242BE005FEE8B /* Modules */,
@@ -137,19 +138,10 @@
 		3A047FD82A8240DD005FEE8B /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				3A047FD92A8240FC005FEE8B /* Models */,
-				3A047FDB2A824108005FEE8B /* Views */,
 				3A047FDC2A82410C005FEE8B /* Controllers */,
 				3A047FDA2A824104005FEE8B /* ViewModels */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		3A047FD92A8240FC005FEE8B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		3A047FDA2A824104005FEE8B /* ViewModels */ = {
@@ -158,13 +150,6 @@
 				3A047FFB2A82427A005FEE8B /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		3A047FDB2A824108005FEE8B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		3A047FDC2A82410C005FEE8B /* Controllers */ = {
@@ -178,8 +163,6 @@
 		3A047FDD2A824116005FEE8B /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				3A047FE92A82415C005FEE8B /* Models */,
-				3A047FEC2A824167005FEE8B /* Views */,
 				3A047FEB2A824162005FEE8B /* Controllers */,
 				3A047FEA2A82415E005FEE8B /* ViewModels */,
 			);
@@ -189,8 +172,6 @@
 		3A047FDE2A824119005FEE8B /* Landing */ = {
 			isa = PBXGroup;
 			children = (
-				3A047FE52A82414C005FEE8B /* Models */,
-				3A047FE72A824153005FEE8B /* Views */,
 				3A047FE82A824157005FEE8B /* Controllers */,
 				3A047FE62A82414F005FEE8B /* ViewModels */,
 			);
@@ -243,13 +224,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		3A047FE52A82414C005FEE8B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		3A047FE62A82414F005FEE8B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -258,26 +232,12 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		3A047FE72A824153005FEE8B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		3A047FE82A824157005FEE8B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				3A047FF12A8241CF005FEE8B /* LandingViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		3A047FE92A82415C005FEE8B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		3A047FEA2A82415E005FEE8B /* ViewModels */ = {
@@ -296,24 +256,12 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		3A047FEC2A824167005FEE8B /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		3A047FFD2A82428C005FEE8B /* App Files */ = {
 			isa = PBXGroup;
 			children = (
 				3A047FC22A823F62005FEE8B /* AppDelegate.swift */,
 				3A047FC42A823F62005FEE8B /* SceneDelegate.swift */,
-				3A0480002A824497005FEE8B /* Constants+Theme.swift */,
-				3A04800F2A824FE4005FEE8B /* AppHelper.swift */,
-				3A04801E2A82BB71005FEE8B /* UserSessionManager.swift */,
-				3A04802A2A82E005005FEE8B /* CoreDataManager.swift */,
-				3A977EC42A836F1600B1BF09 /* Reachability.swift */,
-				3A977EC62A8377EA00B1BF09 /* NetworkManager.swift */,
+				3A0480232A82C709005FEE8B /* CountryList.json */,
 			);
 			path = "App Files";
 			sourceTree = "<group>";
@@ -359,14 +307,50 @@
 		3A0480152A827661005FEE8B /* Helper Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A977ECD2A8381B400B1BF09 /* SessionManager */,
+				3A977ECC2A8381A900B1BF09 /* DatabaseManager */,
+				3A977ECB2A83819C00B1BF09 /* NetworkManager */,
+				3A977EC42A836F1600B1BF09 /* Reachability.swift */,
+				3A04800F2A824FE4005FEE8B /* AppHelper.swift */,
+				3A04801C2A82AE09005FEE8B /* Observable.swift */,
+				3A0480252A82C9CA005FEE8B /* BSEBaseViewController.swift */,
+				3A0480002A824497005FEE8B /* Constants+Theme.swift */,
+			);
+			path = "Helper Files";
+			sourceTree = "<group>";
+		};
+		3A977ECA2A83817200B1BF09 /* App Views */ = {
+			isa = PBXGroup;
+			children = (
 				3A0480162A827671005FEE8B /* BSEHeaderLabel.swift */,
 				3A0480182A82782F005FEE8B /* BSETextField.swift */,
 				3A04800C2A8248E7005FEE8B /* BSEButton.swift */,
-				3A04801C2A82AE09005FEE8B /* Observable.swift */,
-				3A0480232A82C709005FEE8B /* CountryList.json */,
-				3A0480252A82C9CA005FEE8B /* BSEBaseViewController.swift */,
 			);
-			path = "Helper Files";
+			path = "App Views";
+			sourceTree = "<group>";
+		};
+		3A977ECB2A83819C00B1BF09 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				3A977EC62A8377EA00B1BF09 /* NetworkManager.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		3A977ECC2A8381A900B1BF09 /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				3A04802A2A82E005005FEE8B /* CoreDataManager.swift */,
+			);
+			path = DatabaseManager;
+			sourceTree = "<group>";
+		};
+		3A977ECD2A8381B400B1BF09 /* SessionManager */ = {
+			isa = PBXGroup;
+			children = (
+				3A04801E2A82BB71005FEE8B /* UserSessionManager.swift */,
+			);
+			path = SessionManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

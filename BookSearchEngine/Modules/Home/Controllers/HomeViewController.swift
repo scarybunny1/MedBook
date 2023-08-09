@@ -88,4 +88,3 @@ class HomeViewController: BSEBaseViewController {
 }
 
 //TODO:  Improve Folder structure
-//TODO:  App Theme settings
