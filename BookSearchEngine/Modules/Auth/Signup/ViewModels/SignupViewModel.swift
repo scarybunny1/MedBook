@@ -97,7 +97,7 @@ class SignupViewModel{
             return
         }
         
-        emailValidation.value = .okay
+        emailValidation.value = .valid
     }
     
     func validatePasswordInput(_ password: String){
