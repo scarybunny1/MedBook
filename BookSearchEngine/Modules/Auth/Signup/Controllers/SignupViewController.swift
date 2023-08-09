@@ -57,7 +57,7 @@ class SignupViewController: BSEBaseViewController {
         tf.font = Constants.Fonts.textFieldFont
         tf.tag = 2
         tf.returnKeyType = .done
-        tf.textContentType = .none
+        tf.textContentType = .oneTimeCode
 
         return tf
     }()
@@ -116,6 +116,8 @@ class SignupViewController: BSEBaseViewController {
         passwordTF.delegate = self
         
         bind()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGesture)
     }
     
     override func viewDidLayoutSubviews() {

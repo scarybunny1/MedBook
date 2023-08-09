@@ -38,6 +38,7 @@
 		3A0480292A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A0480272A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld */; };
 		3A04802B2A82E005005FEE8B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04802A2A82E005005FEE8B /* CoreDataManager.swift */; };
 		3A04802D2A82E3C5005FEE8B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04802C2A82E3C5005FEE8B /* User.swift */; };
+		3A977EC32A83628E00B1BF09 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 3A977EC22A83628E00B1BF09 /* Toast */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A977EC32A83628E00B1BF09 /* Toast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +376,9 @@
 			dependencies = (
 			);
 			name = BookSearchEngine;
+			packageProductDependencies = (
+				3A977EC22A83628E00B1BF09 /* Toast */,
+			);
 			productName = BookSearchEngine;
 			productReference = 3A047FBF2A823F62005FEE8B /* BookSearchEngine.app */;
 			productType = "com.apple.product-type.application";
@@ -402,6 +407,9 @@
 				Base,
 			);
 			mainGroup = 3A047FB62A823F62005FEE8B;
+			packageReferences = (
+				3A977EC12A83628E00B1BF09 /* XCRemoteSwiftPackageReference "toast-swift" */,
+			);
 			productRefGroup = 3A047FC02A823F62005FEE8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -664,6 +672,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3A977EC12A83628E00B1BF09 /* XCRemoteSwiftPackageReference "toast-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BastiaanJansen/toast-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3A977EC22A83628E00B1BF09 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3A977EC12A83628E00B1BF09 /* XCRemoteSwiftPackageReference "toast-swift" */;
+			productName = Toast;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		3A0480272A82DF2A005FEE8B /* BookSearchEngine.xcdatamodeld */ = {

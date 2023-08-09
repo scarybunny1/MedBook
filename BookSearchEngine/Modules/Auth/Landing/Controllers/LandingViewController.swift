@@ -15,7 +15,7 @@ class LandingViewController: BSEBaseViewController {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFit
-        iv.image = Constants.landingPageImage
+        iv.image = Constants.Images.landingPageImage
         return iv
     }()
     

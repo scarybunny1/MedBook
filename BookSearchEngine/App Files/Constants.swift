@@ -26,7 +26,7 @@ struct Constants{
     static let homePageTitle = "Which topic interests \nyou today?"
     
     static let defaultCountry = "India"
-    
+    static let logoutMessage = "Logged Out Successfully"
     
     struct Fonts{
         static let errorLabelFont = UIFont(name: "Degular-Regular", size: 12)
