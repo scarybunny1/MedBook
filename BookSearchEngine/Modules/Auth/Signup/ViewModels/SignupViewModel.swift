@@ -12,6 +12,7 @@ enum EmailValidation: String{
     case invalid = "Email is invalid."
     case okay = ""
     case userExists = "User already exists."
+    case valid
 }
 
 enum PasswordValidation: Int{

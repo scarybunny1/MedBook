@@ -96,6 +96,7 @@ class SignupViewController: BSEBaseViewController {
     private var enableSubmitButton: Bool {
         emailValidated && passwordValidated
     }
+    private var pwdTFWasCleared = false
     
     //MARK: Lifecycle methods
 
@@ -170,6 +171,8 @@ class SignupViewController: BSEBaseViewController {
                 self?.emailValidated = false
                 self?.showErrorLayout(with: validation.rawValue)
             case .okay:
+                self?.hideErrorLayout()
+            case .valid:
                 self?.emailValidated = true
                 self?.hideErrorLayout()
             }
@@ -238,7 +241,12 @@ extension SignupViewController: UITextFieldDelegate{
         }
         
         if textField == passwordTF{
-            viewmodel.validatePasswordInput(text)
+            if pwdTFWasCleared{
+                viewmodel.validatePasswordInput(string)
+                pwdTFWasCleared = false
+            } else {
+                viewmodel.validatePasswordInput(text)
+            }
         }
         return true
     }
@@ -257,6 +265,14 @@ extension SignupViewController: UITextFieldDelegate{
         if textField == emailTF{
             let email = textField.text?.trimmingCharacters(in: .whitespaces) ?? ""
             viewmodel.validateEmailInput(email)
+        } else{
+            pwdTFWasCleared = true
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == passwordTF{
+            viewmodel.validatePasswordInput(textField.text ?? "")
         }
     }
 }
