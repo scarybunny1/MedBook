@@ -34,7 +34,11 @@ class SignupViewModel{
     }
     
     func fetchCountryList(){
-        fetchDataFromJSON()
+        if Reachability.isInternetAvailable() {
+            fetchDataFromNetwork()
+        } else{
+            fetchDataFromJSON()
+        }
     }
     
     func fetchDataFromJSON() {
@@ -43,6 +47,31 @@ class SignupViewModel{
         }
         do {
             let jsonData = try Data(contentsOf: URL(fileURLWithPath: jsonFilePath))
+            decodeData(jsonData: jsonData)
+        } catch {
+            print("Error decoding JSON: \(error)")
+        }
+    }
+
+    func fetchDataFromNetwork(){
+        guard let countryRequest = CountryRequest().request else{
+            self.fetchDataFromJSON()
+            return
+        }
+        NetworkManager.shared.fetchData(request: countryRequest) { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self?.decodeData(jsonData: data)
+                }
+            case .failure:
+                self?.fetchDataFromJSON()
+            }
+        }
+    }
+    
+    func decodeData(jsonData: Data){
+        do {
             let decoder = JSONDecoder()
             let json = try decoder.decode(CountryResponse.self, from: jsonData)
             countryList.value = json.data.values.compactMap { country in
@@ -51,10 +80,6 @@ class SignupViewModel{
         } catch {
             print("Error decoding JSON: \(error)")
         }
-    }
-
-    func fetchDataFromNetwork(){
-        
     }
     
     func validateEmailInput(_ email: String){
